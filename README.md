@@ -1,2 +1,1 @@
-# js101-2022
-For Introduction to JavaScript Class 2022
+# JS101: Introduction to JavaScript
