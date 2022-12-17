@@ -1,0 +1,35 @@
+<!-- 
+    in strict mode, the followings are not allowed: 
+        1. Undeclared variable is not allowed.
+        2. Undeclared objects are not allowed.
+        3. Deleting an object is not allowed.
+        4. Duplicating a parameter name is not allowed.
+        5. The variable name arguments and eval are not allowed.
+
+    The use of strict mode:
+        - helps to write a cleaner code
+        - changes previously accepted silent errors (bad syntax) into real errors and throws an error message
+        - makes it easier to write "secure" JavaScript
+ -->
+<script>
+    "use strict";
+
+    // num = 3; // throws ReferenceError
+    // obj = {}; // throws ReferenceError
+
+    // let obj = {x: 12}
+    // delete obj; // throws SyntaxError
+
+    // function sum(par1, par1){
+    //     console.log("hi")
+    // }  // SyntaxError: Duplicate parameter
+
+    // let arguments = [1,2,3]; //syntax error
+    
+    // let eval = "Good morning"; // syntax error
+
+
+
+
+
+</script>

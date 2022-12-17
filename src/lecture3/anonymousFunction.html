@@ -1,0 +1,13 @@
+<script>
+    let person = {
+        name: "Ahmad", 
+        age: 30,
+
+        increaseAge: function(){ // anonymous function
+            this.age = this.age + 1;
+        }
+    }
+
+    person.increaseAge();
+    console.log(person);
+</script>

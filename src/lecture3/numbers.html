@@ -1,0 +1,23 @@
+<script>
+    // a program divide two numbers
+    // prompt 
+    let x = Number(prompt("enter a number: "));
+    let y = Number(prompt("Enter second Number: "));
+
+    // javascript uses 8 bytes (64 bits) for number type
+    // 
+    let z = x / y
+
+    // NaN !== NaN
+
+    if(isNaN(z)){
+        console.log("Incorret Input; please try again");
+    } 
+    else {
+        
+        console.log(typeof z);
+        console.log(x / y);
+    }
+
+    // special values of number: NaN, Infinity, -Infinity
+</script>

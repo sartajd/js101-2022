@@ -1,0 +1,106 @@
+<script>
+    // == loose-equality operator checks value, but 
+    // === strict-equality
+
+    // q.2
+
+    /*
+
+    let x = 20;
+    typeof x
+    +
+    -
+    ++
+    --
+
+
+    */
+
+    /*
+   let x = 2;
+   x++;
+   console.log(x);
+
+   let user = {
+    name: "AHmad", 
+    age: 20, 
+   }
+
+   delete user.name;
+
+   */
+
+// let, const: block scoped
+// function, global scoped
+// {
+//     var name = "AHmad"
+// }
+
+// null is intentional 
+// undefined is unintentional 
+
+// NaN !== NaN, use isNaN instead
+// for(let i = 0; i < 10; i++){
+//     if(i === 4){
+//         continue
+//     }
+//     console.log(`user with id ${i} passed`);
+// }
+
+// let list = ['friend', 'friend', 'enemy', 'friend']
+
+// for(let i = 0; i < list.length; i++){
+//     if(list[i] === "enemy") {
+//         break;
+//     }
+//     console.log("hi " + i);
+// }
+
+
+
+
+
+// sayHi();
+
+// function sayHi(){
+//     console.log("HI")
+// }
+
+// let user = {
+//     name: "AHmad", 
+//     age: 20, 
+
+//     increaseAge: function (){
+//         this.age++;
+//     }
+// }
+
+// const x = 10;
+// x = 20;
+
+// const user = {
+//     age: 20,
+// }
+
+// user.age++;
+// user.name = "Ahmad"
+
+
+function sayHi(){
+    var name; // declaration var: we have hoisting, but only declaration
+    console.log(name);
+    console.log(age);
+    name = 'Ahmad'; // initialization
+    let age = 21;
+}
+
+sayHi();
+
+
+
+
+
+
+
+
+</script>

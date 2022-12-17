@@ -1,0 +1,20 @@
+<script>
+    let number = Number(prompt("Enter a number:"));
+
+    // check if valid number
+    if(isNaN(number)) {
+        console.log("not a number");
+    }
+    else {
+        // Corner cases
+        if(number % 2 === 0) {
+            // even
+            console.log("Even");
+        }
+        else {
+            console.log("odd");
+        }
+    }
+    
+
+</script>
