@@ -1,0 +1,26 @@
+<script>
+    // prototype chain
+    const greetingPrototype = {
+        greet: function(){
+            console.log(`Hello, I'm ${this.name}`);
+        }
+    }
+
+    // student constructor function
+    function Student(name, year){
+        this.name = name; 
+        this.year = year; 
+    }
+
+    // teacher's constructor function
+    function Teacher(name, courses){
+        this.name = name; 
+        this.courses = courses; 
+    }
+
+    Object.assign(Student.prototype, greetingPrototype);
+    Object.assign(Teacher.prototype, greetingPrototype);
+
+    const ahmad = new Student("Ahmad", 1);
+    const abdullah = new Teacher("Abdullah", ["HTML", "CSS"]);
+</script>

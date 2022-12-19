@@ -1,0 +1,26 @@
+<script>
+    const arr1 = [1,2,3];
+    const arr2 = [4,5,6];
+
+    // spread Operator
+    console.log(...arr1);
+
+    const account = {
+        username: "ahmad_123",
+    }
+
+    const details = {
+        age: 20, 
+        email: "ahmad@gmail.com",
+    }
+
+
+    const all = {...details}
+
+    const user = {...account, ...details}
+
+    console.log("all: ", all); // 
+    console.log(user);
+
+
+</script>

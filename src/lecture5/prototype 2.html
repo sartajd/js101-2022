@@ -1,0 +1,14 @@
+<script>
+    function Person(name){
+        this.name = name;
+    }
+
+    // one copy for all objects
+    Person.prototype.greet = function(){
+        console.log("hi");
+    }
+
+    const ahmad = new Person("AHmad");
+    const ali = new Person("Ali");
+
+</script>
