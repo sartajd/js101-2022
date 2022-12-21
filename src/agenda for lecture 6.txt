@@ -1,0 +1,3 @@
+prototype
+recursion
+higher-order function

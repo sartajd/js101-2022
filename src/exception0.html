@@ -1,0 +1,21 @@
+<script>
+    function getNumber(msg){
+
+        const num =  Number(prompt(msg));
+        if(isNaN(num)){
+            throw new Error("Not a Number");
+        }
+        return num
+    }
+
+    try {
+        let number = getNumber("Enter a Number: ");
+        console.log(`you entered ${number}`)
+    }
+    catch(error){
+        console.log(error.name)
+    }
+    finally {
+        console.log("done!");
+    }
+</script>

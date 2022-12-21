@@ -1,0 +1,19 @@
+<script>
+
+    // higher-ordr function
+    // This retursn a new 
+    function greaterThan(number){
+        return function(x){
+            if(x > number){
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+    }
+
+    const greaterThan10 = greaterThan(10);
+
+
+</script>

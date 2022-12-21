@@ -1,0 +1,12 @@
+<script>
+    // when a function returns a function, it's called higher-order function
+    // greaterThan is a higher order function
+    function greaterThan(number){
+        return function(x){
+            return x > number
+        }
+    }
+
+    const greaterThan10 = greaterThan(10);
+
+</script>

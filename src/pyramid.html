@@ -1,0 +1,18 @@
+<script>
+    const height = Number(prompt("Height: "));
+    for(let i = 0; i < height; i++){
+        let row = "";
+
+        // add spaces
+        for(let j = 0; j < height - (i + 1); j++){
+            row += " ";
+        }
+
+        // add brickes
+        for(let j = 0; j < i + 1; j++){
+            row += "#";
+        }
+        console.log(row);
+    }
+
+</script>
