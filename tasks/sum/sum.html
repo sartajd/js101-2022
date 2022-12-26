@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>Sum</title>
+    </head>
+
+    <body>
+        <input type="text" id="firstInput" placeholder="First Number">
+        <input type="text" id="secondInput" placeholder="Second Number">
+        <button id="Add" onclick="sum()">Add</button>
+        <input type="text" id="sumInput" placeholder="Sum" disabled>
+
+
+        <script>
+
+
+            function sum(){
+                // get
+                const firstInput = document.querySelector("#firstInput");
+                const secondInput = document.querySelector("#secondInput");
+                const sumInput = document.querySelector("#sumInput");
+
+                sumInput.value = Number(firstInput.value) + Number(secondInput.value);
+            }
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>To-do</title>
+    </head>
+
+    <body>
+        <h1>Tasks for Today</h1>
+        <ul></ul>
+        <input type="text">
+        <button onclick="addTask()">Add Task</button>
+
+        <script>
+            const input = document.querySelector("input");
+            const list = document.querySelector('ul');
+            
+            function addTask(){
+                // get input
+                // create a new <li> element
+                const newTask = document.createElement("li");
+                newTask.innerHTML = input.value;
+                list.appendChild(newTask);
+
+
+            }
+        </script>
+    </body>
+</html>

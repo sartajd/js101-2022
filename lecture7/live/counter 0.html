@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <title>COunter</title>
+    </head>
+
+    <body>
+        <h1>0</h1>
+
+        <!-- event listner -->
+        <button onclick="count()">Count</button>
+        <button onclick="reset()">reset</button>
+        <button ></button>
+        <script>
+            let counter = 0;
+            function count(){
+                counter++;
+                document.querySelector('h1').innerHTML = counter;
+            }
+
+            function reset(){
+                counter = 0;
+                document.querySelector("h1").innerHTML = counter;
+            }
+        </script>
+    </body>
+</html>

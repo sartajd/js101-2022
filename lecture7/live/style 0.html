@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>Style</title>
+    </head>
+
+    <body>
+        <button onclick="turnRed()">Red</button>
+        <button onclick="turnGreen()">Green</button>
+        <button onclick="turnBlue()">Blue</button>
+
+        <script>
+            function turnRed(){
+                const body = document.querySelector('body');
+                body.style.backgroundColor = "red";
+            }
+
+            function turnBlue(){
+                const body = document.querySelector('body');
+                body.style.backgroundColor = "blue";
+            }
+
+            function turnGreen(){
+                const body = document.querySelector('body');
+                body.style.backgroundColor = "green";
+            }
+        </script>
+    </body>
+</html>

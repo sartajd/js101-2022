@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>DOM </title>
+    </head>
+
+    <body>
+        <h1>Hello!</h1>
+        <button onclick="hello()">click here</button>
+
+        <script>
+            const header = document.querySelector("h1");
+            function hello(){
+                if(header.innerHTML === "Hello!"){
+                    header.innerHTML = "Goodbye!";
+                } else {
+                    header.innerHTML = "Hello!";
+                }
+            }
+        </script>
+    </body>
+</html>
