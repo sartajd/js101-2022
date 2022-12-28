@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <title>To Do </title>
+    </head>
+
+    <body>  
+        <h1>Todo List</h1>
+
+        <form >
+            <input type="text" id="taskInput" placeholder="Enter a Task" autofocus>
+            <input type="submit">
+            <button onclick="deleteAll()">Clear all</button>
+        </form>
+
+        <ul></ul>
+
+        <script>
+            const form = document.querySelector('form');
+            const list = document.querySelector('ul');
+            const taskInput = document.querySelector('#taskInput');
+
+            form.onsubmit = addTask;
+
+            function addTask(){
+
+                // third iteration
+                // check for emptyness
+                if(taskInput.value === "") {
+                    taskInput.focus();
+                    return false; 
+                }
+                
+
+                // create a <li> element
+                const newTask =  document.createElement('li');
+                newTask.innerHTML = taskInput.value;
+                
+                list.appendChild(newTask);
+
+                // create delete button
+                const button = document.createElement('button');
+                button.innerText = "delete";
+
+                button.onclick = function(){
+                    newTask.remove();
+                }
+                
+                newTask.appendChild(button);
+
+                // second iteration
+                // clean input after creating task
+                taskInput.value = "";
+                
+                // prevent page reload
+                return false;
+            }
+
+            function deleteAll(){
+                list.innerHTML = "";
+            }
+
+        </script>
+    </body>
+</html>

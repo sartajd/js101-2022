@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>Style</title>
+    </head>
+
+    <body>
+        <button onclick="changeColor(event)" data-value="red">Red</button>
+        <button onclick="changeColor(event)" data-value="green">Green</button>
+        <button onclick="changeColor(event)" data-value="blue">Blue</button>
+        <button onclick="changeColor(event)" data-value="black">black</button>
+
+        <script>
+            function changeColor(event){
+                const body = document.querySelector('body');
+                body.style.backgroundColor = event.target.dataset.value;
+            }
+        </script>
+    </body>
+</html>

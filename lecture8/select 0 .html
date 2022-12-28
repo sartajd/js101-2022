@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <title>select </title>
+    </head>
+
+    <body>
+
+        <h1>Select</h1>
+        <select >
+            <option value="">-</option>
+            <option value="red">Red</option>
+            <option value="green">Green</option>
+            <option value="blue">Blue</option>
+        </select>
+
+        <script>
+            const select = document.querySelector('select');
+            // event listnere
+            select.onchange = function(){
+                // change background color of the page
+                document.body.style.backgroundColor = this.value;
+            }
+
+        </script>
+    </body>
+</html>
+
+<script>
+    const user = {
+        name: "ahmad", 
+
+        introduceSelf(){
+            console.log(`Hello ${this.name}`)
+        }
+    }
+</script>
