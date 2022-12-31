@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>For loop</title>
+    </head>
+
+    <body>
+        <h1>Hello world</h1>
+        <h1>How are you?</h1>
+        <button onclick="turnRed()">click me</button>
+
+        <script>
+            function turnRed(){
+                const headings = document.querySelectorAll('h1')
+                
+
+                // for of
+                for(heading of headings){
+                    heading.style.color = 'red';
+                }
+
+                // headings[0].style.color = 'blue';
+            }
+        </script>
+    </body>
+</html>

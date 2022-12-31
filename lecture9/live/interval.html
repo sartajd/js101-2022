@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>INterval</title>
+    </head>
+
+    <body>
+        <h1>Happy Eid!</h1>
+
+        <script>
+            function showHide(){
+                const heading = document.querySelector("h1");
+                if(heading.style.visibility === "hidden") {
+                    heading.style.visibility = 'visible'
+                }else {
+                    heading.style.visibility = 'hidden';
+                }
+            }
+
+            setInterval(showHide, 500);
+        </script>
+    </body>
+</html>
