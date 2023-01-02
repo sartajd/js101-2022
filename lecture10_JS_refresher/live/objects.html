@@ -1,0 +1,35 @@
+<script>
+    // literal
+    const person = {
+        // key: value,
+        name: "ali",
+        age: 20,
+
+        introduceSelf: function(){
+            console.log("Hi, i'm " + this.name);
+        }
+    }
+
+
+    function Person(name, age){
+        this.name = name; 
+        this.age = age; 
+
+        this.introduceSelf = function(){
+            console.log("Hi, I'm " + name);
+        }
+    }
+
+    const person1 = new Person("ali", 10);
+
+    // Array 
+    // String
+    // Date
+    // Math
+
+
+
+    
+
+    
+</script>

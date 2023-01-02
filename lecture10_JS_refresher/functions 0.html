@@ -1,0 +1,41 @@
+<script>
+     // functions, return values, arguments
+    // built-in functions
+    // custom functions
+    alert("hi");
+    prompt("whta is your name");
+
+    // create your own function
+
+    function sum(x, y){
+        return x + y;
+    }
+
+    sum(3,4);
+
+    // function as value
+    const subtract = function(x,y){
+        return x - y;
+    }
+
+    // function combination
+    subtract(sum(3,4), sum(1,2));
+
+
+    // function as callback
+    const greet = function(name, callback){
+        console.log("Hi " + name);
+        callback();
+    }
+
+    const askHow = function(){
+        console.log("how are you?");
+    }
+
+    const welcome = function(){
+        console.log("welcome!");
+    }
+
+    
+
+</script>

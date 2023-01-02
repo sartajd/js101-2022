@@ -1,0 +1,68 @@
+<script>
+    // why we need object?
+    /*  
+        Objects make it easier to understand how a program works by
+        bringing together data and its behavior (or method) in a
+        single bundle called an “object.”
+    */
+
+    // without object
+    // both are related
+    let name = "ahmad"; 
+    let age = 20;
+
+    // use object instead
+    const person = {
+        name: "ahmad", 
+        age: 20, 
+        introduceSelf: function(){
+            console.log(`hi, I'm ${this.name}`);
+        }
+    }
+    
+    // constructor
+    function Person(name, age){
+        this.name = name; 
+        this.age = age;
+
+        this.introduceSelf = function(){
+            console.log(`hi, I'm ${this.name}`);
+        }
+    }
+
+    // create objects
+    const user1 = new Person("Ahmad", 10);
+    const user2 = new Person("Ali", 25);
+
+    
+    user1.name;
+    user1["age"];
+
+    user1["age"] = 11;
+    user1.fatherName = "Mahmood";
+
+
+
+
+    // for in loop: iterate over object
+    for(let key of user1) {
+        console.log(`${key} is ${user1[key]}`);
+    }
+
+
+
+
+
+
+    /*
+        built-in objects
+        - Array (push, pop, foreach, for-of)
+        - Date
+        - Math
+
+
+
+    */
+    
+
+</script>

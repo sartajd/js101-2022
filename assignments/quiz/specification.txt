@@ -1,0 +1,4 @@
+Implement a quiz application that: 
+- when an answer is guessed, increment the score if the answer is correct. 
+- move to the next question after an answer is selected
+- when the game is over, show a game over screen and display the final score. 

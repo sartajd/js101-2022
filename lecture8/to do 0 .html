@@ -41,9 +41,7 @@
                 const button = document.createElement('button');
                 button.innerText = "delete";
 
-                button.onclick = function(){
-                    newTask.remove();
-                }
+                button.onclick = removeTask;
                 
                 newTask.appendChild(button);
 
@@ -57,6 +55,11 @@
 
             function deleteAll(){
                 list.innerHTML = "";
+            }
+
+            // remove a task
+            function removeTask(){
+                this.parentElement.remove()
             }
 
         </script>
