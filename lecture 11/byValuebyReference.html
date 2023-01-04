@@ -1,0 +1,25 @@
+<script>
+
+    // copy by value
+    let x = 20; 
+    let y = x; 
+
+    y = 2; 
+
+    console.log('x: ', x);
+    console.log('y: ', y);
+
+
+    // copy by reference
+    const obj1 = {
+        x: 80, 
+    }
+
+    const obj2 = obj1;
+    obj2.x = 100;
+    
+    console.log("obj1 x: ", obj1.x);
+    console.log("obj2 x: ", obj2.x);
+
+
+</script>
