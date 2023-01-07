@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <title>Gender</title>
+    </head>
+
+    <body>
+
+        <form action="">
+            
+            name: 
+            <input type="text" name="name" id="name">
+            <button>get gender</button>
+            <div id="result"></div>
+        </form>
+
+        
+        <script>
+
+            document.querySelector("form").onsubmit = function(){
+                const name = document.querySelector("#name").value
+    
+                fetch(`https://api.genderize.io?name=${name}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        document.querySelector("#result").innerHTML = `${name} is a ${data.gender} name`;
+                    })
+
+                return false
+            }
+            
+        </script>
+    </body>
+</html>

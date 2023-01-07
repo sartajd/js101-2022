@@ -1,0 +1,39 @@
+<html>
+   <head></head> 
+
+   <body>
+        <button>click me</button>
+        <div id="result"></div>
+   </body>
+</html>
+<script>
+
+    function longRunningFunction(){
+        let i = 0; 
+        while(i < 10000000000){
+            i++;
+        }
+    }
+    function square(x){
+        return x * x;
+    }
+
+    // takes 1 second
+    function squareAsync(x, callback){
+        let sq = square(x)
+
+        // 1 sec
+        setTimeout(() => callback(sq), 10000);
+    }
+
+
+    squareAsync(3, function(result){
+        console.log(result);
+    })
+
+    squareAsync(9, function(result){
+        document.querySelector("#result").innerHTML = result;
+    })
+
+
+</script>

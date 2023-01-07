@@ -1,0 +1,56 @@
+<html>
+    <head>
+        <title>thread</title>
+    </head>
+
+    <body>  
+
+        <div id="container">
+        </div>
+        <button onclick="loadImage()">get random cat</button>
+        <input type="text" alt="enter some text">
+
+
+        <script>
+            async function load_pic() {
+                
+                const url = "https://cataas.com/cat"
+
+                const options = {
+                    method: "GET"
+                }
+
+                let response = await fetch(url, options)
+
+                if (response.status === 200) {
+                    
+                    const imageBlob = await response.blob()
+                    const imageObjectURL = URL.createObjectURL(imageBlob);
+
+                    const image = document.createElement('img')
+                    image.src = imageObjectURL
+
+                    const container = document.getElementById("container")
+                    container.innerHTML = ""
+                    container.append(image)
+                }
+                else {
+                    console.log("HTTP-Error: " + response.status)
+                }
+            }
+
+
+            function loadImage(){
+                // emulate time consuming task
+                let n = 10000000000;
+                while (n > 0){
+                    n--;
+                }
+
+
+                load_pic()
+            }
+
+        </script>
+    </body>
+</html>

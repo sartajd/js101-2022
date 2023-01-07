@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <title>INterval</title>
+    </head>
+
+    <style>
+        .ch, .cv {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+
+    <body style="width: 100%; height: 100%; background-color: black; overflow: hidden;" class="ch cv">
+        <div style="color: white;">
+            <h1>Happy Eid!</h1>
+        </div>
+
+        <script>
+            function sum(x,y){
+                return x + y;
+            }
+
+            sum(2,3);
+            // define the function
+            function showHide(){
+                const heading = document.querySelector("h1");
+                if(heading.style.visibility === "hidden") {
+                    heading.style.visibility = 'visible'
+                }else {
+                    heading.style.visibility = 'hidden';
+                }
+            }
+
+            setInterval(showHide, 1000);
+        </script>
+    </body>
+</html>
