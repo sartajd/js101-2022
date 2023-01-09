@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>Fetch</title>
+    </head>
+
+    <body>
+
+        <img src="" alt="" id="photo">
+        
+        <script>
+            // Handle fetch with async/await
+            async function getUser() {
+                const response = await fetch('https://api.github.com/users/sartajd')
+                const data = await response.json()
+
+                document.querySelector("#photo").setAttribute('src', data.avatar_url);
+
+                console.log(data)
+            }
+        </script>
+    </body>
+</html>

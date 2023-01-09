@@ -1,0 +1,12 @@
+<html>
+    <script>
+        const API_URL = "https://jsonplaceholder.typicode.com"
+        function getPost(id=1, callback){
+                fetch(`${API_URL}/posts/${id}`)
+                .then(response => response.json())
+                .then(post => {
+                    callback(post)
+                })
+        }
+    </script>
+</html>

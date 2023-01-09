@@ -1,0 +1,80 @@
+<html>
+    <head>
+        <title>post</title>
+        <link rel="stylesheet" href="styles.css">
+
+    </head>
+
+    <body>
+
+        <div class="container">
+
+        </div>
+
+        <!-- post template -->
+        <template id="postTemplate">
+            <div class="post">
+                <h2 class="title"></h2>
+                <p class="body"></p>
+            </div>
+        </template>
+
+
+    <script>
+
+
+        // using then syntax
+        function getAllPosts(){
+            fetch("https://jsonplaceholder.typicode.com/posts")
+            .then(response => response.json())
+            .then(posts => {
+                for(post of posts){
+                    console.log(post)
+                    appendPostToContainer(post);
+                }
+            })
+        }
+
+
+        // anotehr way using async/await
+        async function getAllPostsA(){
+            const response = await fetch("https://jsonplaceholder.typicode.com/posts")
+            const posts = await response.json()
+            for(post of posts){
+                console.log(post)
+                appendPostToContainer(post);
+            }
+        }
+
+        function appendPostToContainer(post){    
+            const template = getPostTemplate();
+            template.querySelector(".title").innerHTML = post.title;
+            template.querySelector(".body").innerHTML = post.body
+            document.querySelector(".container").appendChild(template);
+
+        }
+
+        function getPostTemplate(){
+            const template = document.querySelector("#postTemplate");
+            const clone = template.content.cloneNode(true);
+            return clone
+        }
+
+
+        function getPost(id){
+            fetch("https://jsonplaceholder.typicode.com/posts/"+id)
+            .then(function(response){
+                return response.json()
+            })
+            .then(function(post){
+                // add title 
+                document.querySelector(".post #title").innerHTML = post.title
+                // add body
+                document.querySelector(".post #body").innerHTML = post.body
+                console.log(post);
+            })
+        }
+        
+    </script>
+    </body>
+</html>

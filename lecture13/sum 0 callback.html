@@ -1,0 +1,12 @@
+<script>
+    function print(str){
+        console.log(str);
+    }
+
+    function sum(x, y, callback){
+        let total = x + y; 
+        callback(total);
+    }
+
+    sum(1,2, print);
+</script>

@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <title>Posts</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+
+    <body>  
+        <div class="container"></div>        
+
+         <!-- post template -->
+         <template id="postTemplate">
+            <div class="post">
+                <h2 class="title"></h2>
+                <p class="body"></p>
+            </div>
+        </template>
+
+
+        <script>
+            const API_URL = "https://jsonplaceholder.typicode.com"
+
+            function getPost(id){
+                fetch(`${API_URL}/posts/${id}`)
+                .then(response => response.json())
+                .then(post => {
+                    appendPostToContainer(post)
+                })
+            }
+
+            function appendPostToContainer(post){
+                
+                const template = getPostTemplate();
+
+                template.querySelector(".title").innerHTML = post.title;
+                template.querySelector(".body").innerHTML = post.body
+
+                document.querySelector(".container").appendChild(template);
+
+            }
+
+            function getPostTemplate(){
+                const template = document.querySelector("#postTemplate");
+                const clone = template.content.cloneNode(true);
+                return clone
+            }
+
+            getPost(1);
+
+        </script>
+    </body>
+</html>

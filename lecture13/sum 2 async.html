@@ -1,0 +1,27 @@
+<script>
+    function print(str){
+        console.log(str);
+    }
+
+    function sum(x, y){
+        const promise = new Promise((resolve, reject) => {
+            let total = x + y;
+            // check if not a number
+            if(isNaN(total)){
+                reject("x or y is not a number");
+            }
+            else {
+                resolve(total)
+            }
+        })
+
+        return promise;
+    }
+
+    (async () => {
+        const total = await sum(2, 3)
+        console.log(total);
+    })()
+
+
+</script>
