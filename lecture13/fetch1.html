@@ -12,5 +12,13 @@
 
         return promise
     }
+
+    getPost(1)
+    .then(response => {
+        return response.json()
+    })
+    .then(post => {
+        document.write(post.title);
+    })
 </script>
 </html>

@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>blog</title>
+    </head>
+    <body>
+        <div class="container">
+        </div>
+        <button onclick="loadPost(1)">load post 1</button>
+
+
+        <script>
+            async function loadPost(id){
+                const container = document.querySelector(".container");
+
+                fetch("https://jsonplaceholder.typicode.com/posts/1")
+                .then(response => response.json())
+                .then(data => {
+                    const title = document.createElement("h1");
+                    title.innerHTML = data.title;
+                    container.appendChild(title);
+                })
+            }
+        </script>
+    </body>
+</html>

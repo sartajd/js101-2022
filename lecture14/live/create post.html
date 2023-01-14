@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <title>create post</title>
+    </head>
+
+    <body>
+        <div>
+            <input type="text" id="userid" value="1" disabled> <br>
+            article title:
+            <input type="text" placeholder="title" id="title"> <br>
+
+            Article Body:
+            <textarea name="body" id="body" cols="30" rows="10"></textarea> <br>
+
+            <button onclick="createPost()">create post</button>
+        </div>
+
+        <script>
+            
+            function createPost(){
+
+
+                const userId = document.querySelector("#userid").value;
+                const title = document.querySelector("#title").value;
+                const body = document.querySelector("#body").value;
+
+                fetch("https://jsonplaceholder.typicode.com/posts", {
+                    method: "post", 
+                    body: JSON.stringify({
+                        userId: userId, 
+                        title: title, 
+                        body: body, 
+                    }), 
+                    headers: {
+                        'Content-type': 'application/json; charset=UTF-8',
+                    },
+                })
+                .then(response => {
+                    // when post is successfully created
+                    if(response.status === 201){
+                        console.log("post created successfully")
+                    }
+                    return response.json()
+                })
+                .then(json => {
+                    console.log(json);
+                })
+                .catch(e => {
+                    console.log(e)
+                })
+
+    
+            }
+
+        </script>
+    </body>
+</html>

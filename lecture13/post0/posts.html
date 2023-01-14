@@ -5,46 +5,72 @@
     </head>
 
     <body>  
-        <div class="container"></div>        
+        <div class="container"></div>   
+        <button onclick="getPost(1)">get post</button>     
 
          <!-- post template -->
          <template id="postTemplate">
             <div class="post">
                 <h2 class="title"></h2>
                 <p class="body"></p>
+                <button onclick="getCommentForPost(event)">show comments</button>
+                <ul id="comments"></ul>
             </div>
         </template>
 
 
         <script>
+            count = 1; 
+
             const API_URL = "https://jsonplaceholder.typicode.com"
 
-            function getPost(id){
+            function getPost(){
+                let id = count; 
                 fetch(`${API_URL}/posts/${id}`)
                 .then(response => response.json())
                 .then(post => {
+                    console.log(post);
                     appendPostToContainer(post)
+                    count++;
                 })
             }
 
-            function appendPostToContainer(post){
-                
-                const template = getPostTemplate();
+            function getCommentForPost(event){
+                // get postid from button which fired the event
+                let postId = event.target.dataset.postid;
 
-                template.querySelector(".title").innerHTML = post.title;
-                template.querySelector(".body").innerHTML = post.body
+                // get post from which the event is fired
+                const post = event.target.parentNode
 
-                document.querySelector(".container").appendChild(template);
-
+                // get comments for a post
+                fetch(`${API_URL}/posts/${postId}/comments`)
+                .then(response => response.json())
+                .then(comments => {
+                    // 
+                    const commentContainer = post.querySelector('#comments');
+                    for(comment of comments) {
+                        // create <li/>
+                        const element = document.createElement('li');
+                        // add comment author name and comment body
+                        element.innerHTML = `By ${comment.email}: ${comment.body}`;
+                        // append it to commentContainer
+                        commentContainer.appendChild(element);
+                    }
+                })
             }
 
-            function getPostTemplate(){
+
+
+            function appendPostToContainer(post){
                 const template = document.querySelector("#postTemplate");
                 const clone = template.content.cloneNode(true);
-                return clone
+                clone.querySelector(".title").innerHTML = post.title;
+                clone.querySelector(".body").innerHTML = post.body
+                clone.querySelector('button').setAttribute('data-postid', post.id);
+                document.querySelector(".container").appendChild(clone);
+
             }
 
-            getPost(1);
 
         </script>
     </body>
