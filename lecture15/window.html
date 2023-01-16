@@ -1,6 +1,15 @@
 <html>
     <head>
         <title>Window</title>
+
+        <style>
+            #toTop {
+                position: fixed;
+                bottom: 0;
+                right: 0;
+                display: none;
+            }
+        </style>
     </head>
 
     <body>
@@ -35,6 +44,8 @@
         <h1>Item 3</h1>
         <h1>Item 2</h1>
         <h1>Item 1</h1>
+
+        <button id="toTop">Top</button>
         
         <script>
             window.onscroll = () => {
@@ -45,11 +56,19 @@
 
                 // when reach end of page
                 if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+                    document.querySelector("#toTop").style.display = "block";
                     document.querySelector('body').style.background = 'green';
                 } else {
                     document.querySelector('body').style.background = 'white';
                 }
             };
+
+
+            function toTop(){
+                window.scrollTo({top: 0})
+            }
+
+            document.querySelector("#toTop").onclick = toTop
         </script>
     </body>
 </html>
