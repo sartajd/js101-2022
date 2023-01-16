@@ -1,3 +1,4 @@
+/*
 const getPosts = (start=0, end=start+9) => {
     let posts = []
 
@@ -20,6 +21,7 @@ const getPosts = (start=0, end=start+9) => {
     })
 }
 
+*/
 
 
 
@@ -28,10 +30,9 @@ const getPosts = (start=0, end=start+9) => {
 
 
 
-
-/*
+const getPosts = (start=0, end=start+9) => {
     let data = []
-
+    
     const promise = new Promise((resolve, reject)=> {
         try{
             for(let i = start; i <= end; i++){
@@ -43,7 +44,6 @@ const getPosts = (start=0, end=start+9) => {
             reject("Error while loading posts")
         }
     })
-
+    
     return promise
-
-    */
+}
