@@ -1,0 +1,4 @@
+endpoints: 
+/ -> returns {"counter": count}
+/increment -> increase counter by one and returns the updated value
+/decrement -> decrease counter by one and returns the updated value

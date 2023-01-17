@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <title>counter</title>
+        <script src="./api.js"></script>
+    </head>
+
+    <body>
+
+        <h1 id="count">0</h1>
+        <button id="increment">increment</button>
+        <button id="decrement">Decrement</button>
+        
+
+        <script>
+
+            getCount()
+            .then(count => {
+                document.querySelector("#count").innerHTML = count
+            })
+            
+
+
+            function handleIncrement(){
+                increment()
+                .then(count => {
+                    document.querySelector("#count").innerHTML = count
+                })
+            }
+
+            function handleDecrement(){
+                decrement()
+                .then(count => {
+                    document.querySelector("#count").innerHTML = count
+                })
+            }
+
+
+
+            document.querySelector("#increment").addEventListener('click', handleIncrement)
+            document.querySelector("#decrement").addEventListener('click', handleDecrement)
+        </script>
+    </body>
+</html>

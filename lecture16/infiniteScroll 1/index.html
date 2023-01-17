@@ -1,0 +1,122 @@
+<html>
+    <head>
+        <title>Infinite Scroll</title>
+        <script src="./api.js"></script>
+
+        <style>
+            .container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .post {
+                border: 1px solid grey;
+                border-radius: 5px;
+                background-color: #77dd11;
+                padding: 10px;
+                margin: 5px;
+                font-size: 30px;
+                font-weight: bold;
+                width: 500px;
+
+                min-height: 80px;
+
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            @keyframes hide {
+                from {
+                    opacity: 1;
+                }
+                to {
+                    opacity: 0;
+                }
+            }
+
+            .post {
+                animation-name: hide;
+                animation-duration: 2s;
+                animation-fill-mode: forwards;
+                animation-play-state: paused;
+            }  
+        </style>
+
+    </head>
+    <body>
+        <h1>Posts</h1>
+        <div class="container"></div>
+
+
+        <script>
+             // Start with first post.
+             let counter = 1;
+
+            // Load posts 20 at a time.
+            const quantity = 10;
+
+            // When DOM loads, render the first 20 posts.
+            document.addEventListener('DOMContentLoaded', load);
+
+            // If scrolled to bottom, load the next 20 posts.
+            window.onscroll = () => {
+                if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+                    load();
+                }
+            };
+
+            // Load next set of posts.
+            function load() {
+                // Set start and end post numbers, and update counter.
+                const start = counter;
+                const end = start + quantity - 1;
+                counter = end + 1;
+
+                getPosts(start, end)
+                .then(posts => {
+                    posts.forEach(post => {
+                        add_post(post);
+                    });
+                })
+            };
+
+            // 
+            function add_post(contents){
+                // Create new post.
+                const post = document.createElement('div');
+                post.className = 'post';
+                post.innerHTML = contents;
+
+                 // Add button to hide post.
+                 const hide = document.createElement('button');
+                hide.className = 'hide';
+                hide.innerHTML = 'Hide';
+                post.append(hide);
+
+                // Add post to DOM.
+                document.querySelector('.container').appendChild(post);
+            }
+
+
+            // If hide button is clicked, delete the post.
+            document.addEventListener('click', event => {
+                // get the button
+                const element = event.target;
+                // if it's hide button
+                if (element.className === 'hide') {
+                    // start animation
+                    element.parentElement.style.animationPlayState = 'running';
+                    // when animation ends
+                    console.log(element.parentElement)
+                    element.parentElement.addEventListener('animationend', () =>  {
+                        // remove the post
+                        element.parentElement.remove();
+                    });
+                }
+            });
+
+        </script>
+    </body>
+</html>
