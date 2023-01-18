@@ -1,0 +1,29 @@
+<html>
+
+<head>
+    <!-- import d3 library -->
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+</head>
+
+<body>
+    <svg id="svg" width="200" height="200" style="background-color: rgb(231, 231, 231);">
+    </svg>
+
+    <script>
+        // select svg from DOM
+        const svg = d3.select("#svg")
+
+        // append circle to svg
+        svg.append('circle')
+            .attr('cx', 60)
+            .attr('cy', 60)
+            .attr('r', 50)
+            .style('fill', 'red')
+
+
+
+    </script>
+
+
+</body>
+</html>

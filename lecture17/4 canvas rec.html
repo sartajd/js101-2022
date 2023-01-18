@@ -1,0 +1,16 @@
+<!-- canvas can be used to draw both 3D and 3D scenes -->
+<html>
+    <body>  
+
+        <canvas width="200" height="200" ></canvas>
+
+        <script>
+            const canvas = document.querySelector("canvas")
+            // i want to draw 2d
+            let context = canvas.getContext("2d")
+            context.fillStyle = "red"
+            context.fillRect(10, 10, 100, 50);
+            
+        </script>
+    </body>
+</html>

@@ -1,0 +1,16 @@
+<html>
+
+<body>
+    <p></p>
+    <script>
+        fetch("http://localhost:8080")
+            .then(res => {
+                console.log(res)
+                return res.text
+            })
+            .then(text => {
+                console.log(text)
+            })
+    </script>
+</body>
+</html>
