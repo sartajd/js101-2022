@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+
+    <!-- ReactJS: A JavaScript Declarative UI Library -->
+    <script src="./react.min.js"></script>
+    <!-- React DOM: to intelligently update DOM -->
+    <script src="./react-dom.min.js"></script>
+
+    <!-- to convert JSX to regular JavaScript -->
+    <script src="./babel.min.js"></script>
+
+    <style>
+        #root {
+            text-align: center;
+        }
+        .red {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        function App(){
+            // State
+            // num1, defualt 0
+            const [num1, setNum1] = React.useState(0)
+            // num2
+            const [num2, setNum2] = React.useState(0)
+            // score
+            const [score, setScore] = React.useState(0)
+            // response 
+            const [response, setResponse] = React.useState("")
+
+            // question
+            /*
+                The useRef() hook is a way to select elements with React. 
+                You could use the usual document. querySelector method, 
+                however it's not optimised since it'll look through 
+                the entire DOM. Whereas if you use this hook, it'll 
+                only look in your component!
+            */
+            const questionEl = React.useRef(null)
+
+            const handleChange = event => {
+                setResponse(event.target.value)
+            }
+
+            const handleStartAgain = event =>  {
+                setScore(0)
+            }
+
+            const handleKeyPress = event => {
+                // if Key is "Enter", submit it
+                if(event.key === "Enter"){
+                    const answer = Number(response)
+                    if(answer === num1 + num2){
+                        // answer is correct
+                        setScore(score + 1)
+
+                        // clear the response 
+                        setResponse("")
+                        // create a new question
+                        setNum1(Math.ceil(Math.random() * 10))
+                        setNum2(Math.ceil(Math.random() * 10))
+
+                        // clear red color
+                        questionEl.current.style.color = ""
+
+
+                    }else {
+                        // answer is wrong
+                        // clear the response
+                        setResponse("")
+                        questionEl.current.style.color = "red"
+                    }
+
+                }
+            }
+
+            // when user press "Enter" the submit should trigger
+            if(score >= 3){
+                // render win!
+                return (
+                    <>
+                        <h1>You Win</h1>
+                        <button onClick={handleStartAgain}>start again</button>
+                    </>
+                )
+            }
+            return (
+                <div>
+                    <h1 id="question" ref={questionEl}>{num1} + {num2}</h1>
+                    <input value={response} onChange={handleChange} onKeyPress={handleKeyPress}/>
+                    <div>
+                        
+                        score: {score}
+                    </div>
+                </div>
+            )
+        }
+
+        
+
+        // specify where you want to render your react app
+        const root = ReactDOM.createRoot(document.getElementById("root"));
+        // render a component
+        root.render(<App />);
+
+    </script>
+</body>
+</html>

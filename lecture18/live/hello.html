@@ -1,0 +1,77 @@
+<html>
+    <head>
+        <title>Hello</title>
+
+        <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    </head>
+
+    <body>
+        <div id="root"></div>
+        
+        <script type="text/babel">
+
+
+
+            function Counter(){
+                const [count, setCount] = React.useState(0)
+
+                const handleIncrement = () => {
+                    setCount(count + 1)
+                }
+
+                const handleDecrement = () => {
+                    setCount(count - 1)
+                }
+
+                return (
+                    <div>
+                        <h1>{count}</h1>
+                        <button onClick={handleDecrement}>-</button>
+                        <button onClick={handleIncrement}>+</button>
+                    </div>
+                )
+            }
+
+            function App() {
+                return (
+                    <div>
+                        <Counter />
+                        <Counter />
+                        <Counter />
+                        <Counter />
+                    </div>
+                )
+            }
+
+
+            // specify where you want to render your react app
+            const root = ReactDOM.createRoot(document.getElementById("root"));
+
+            // render a component
+            root.render(<App />)
+
+
+
+
+
+
+        </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </body>
+</html>
