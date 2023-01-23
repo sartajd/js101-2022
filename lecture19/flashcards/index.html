@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+
+    <!-- ReactJS: A JavaScript Declarative UI Library -->
+    <script src="./react.min.js"></script>
+    <!-- React DOM: to intelligently update DOM -->
+    <script src="./react-dom.min.js"></script>
+
+    <!-- to convert JSX to regular JavaScript -->
+    <script src="./babel.min.js"></script>
+</head>
+<body>
+    
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        const CardEditor = props => {
+            return <div>
+                Card Editor
+                <hr />
+                <button onClick={props.switchMode}>switch to Editor</button>
+                </div>
+        }
+
+        const CardViewer = props => {
+            return <div>
+                    Card Viewer
+                    <hr />
+                    <button onClick={props.switchMode}>switch to Editor</button>
+                </div>
+        }
+
+        function App(){
+
+            const [mode, setMode] = React.useState("viewer") // or viewer
+
+            // toggle between editor and viewer
+            const switchMode = () => {
+                if(mode === "editor"){
+                    setMode("viewer")
+                }else {
+                    setMode("editor")
+                }
+            }
+
+
+            if(mode === "editor"){
+                return (
+                <div>
+                    <CardEditor switchMode={switchMode}/>
+                </div> 
+                )
+            }else {
+                return (
+                    <div>
+                        <CardViewer switchMode={switchMode}/>
+                    </div>
+                )
+            }
+        }
+
+        
+
+        // specify where you want to render your react app
+        const root = ReactDOM.createRoot(document.getElementById("root"));
+        // render a component
+        root.render(<App />);
+
+    </script>
+</body>
+</html>

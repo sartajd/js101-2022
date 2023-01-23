@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+
+    <!-- ReactJS: A JavaScript Declarative UI Library -->
+    <script src="./react.min.js"></script>
+    <!-- React DOM: to intelligently update DOM -->
+    <script src="./react-dom.min.js"></script>
+
+    <!-- to convert JSX to regular JavaScript -->
+    <script src="./babel.min.js"></script>
+</head>
+<body>
+    
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        function Button1(props){
+            return (
+                <button onClick={props.increment}>clicked{props.count}</button>
+            )
+        }
+
+        function Button2(props){
+            return (
+                <button onClick={props.increment}>clicked{props.count}</button>
+            )
+        }
+        
+
+        function App(){
+
+            const [count, setCount] = React.useState(0)
+
+            const increment = () => {
+                setCount(count + 1)
+            }
+
+            return (
+                <div style={{backgroundColor: "lightgrey", padding: 10}}>
+                    <Button1 count={count} increment={increment}/>
+                    <Button2 count={count} increment={increment}/>
+                </div>
+            )
+        }
+
+
+        // specify where you want to render your react app
+        const root = ReactDOM.createRoot(document.getElementById("root"));
+        // render a component
+        root.render(<App />);
+
+    </script>
+</body>
+</html>

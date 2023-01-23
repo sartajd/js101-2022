@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Todo</title>
+
+    <!-- ReactJS: A JavaScript Declarative UI Library -->
+    <script src="./react.min.js"></script>
+    <!-- React DOM: to intelligently update DOM -->
+    <script src="./react-dom.min.js"></script>
+
+    <!-- to convert JSX to regular JavaScript -->
+    <script src="./babel.min.js"></script>
+
+</head>
+
+<body>
+    
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        function App(){
+            // input: string
+            const [input, setInput] = React.useState("")
+            // tasks: array
+            const [tasks, setTasks] = React.useState(["task 1", "task 2", "task 3"])
+
+            const handleChange = event => {
+                setInput(event.target.value)
+            }
+
+            const handleKeyPress = event => {
+                // if Enter 
+                if(event.key === "Enter"){
+                    // add task to tasks
+                    setTasks([...tasks, input])
+
+                    // clear the input
+                    setInput("")
+                }
+            }
+
+            const handleDone = event => {
+                // delete the task
+                let i = event.target.dataset.index;
+                let oldTasks = [...tasks]
+                oldTasks.splice(i, 1)
+
+                setTasks(oldTasks)
+                
+            }
+
+
+
+            // when user press "Enter" the submit should trigger
+            return (
+                <div>
+                    <h1>Tasks</h1>
+                    <hr />
+                    <ul>
+                        {
+                            tasks.map((task, i) => {
+                                return (
+                                    <li key={i}>
+                                        <button onClick={handleDone} data-index={i}>✔️</button>
+                                        {task}
+                                    </li>
+                                )
+                            })
+                        }
+                    </ul>
+                    <input placeholder="add new task" value={input} onChange={handleChange} onKeyPress={handleKeyPress}/>
+
+                </div>
+            )
+        }
+
+        
+
+        // specify where you want to render your react app
+        const root = ReactDOM.createRoot(document.getElementById("root"));
+        // render a component
+        root.render(<App />);
+
+    </script>
+</body>
+</html>

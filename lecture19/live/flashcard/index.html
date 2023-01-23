@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+
+    <!-- ReactJS: A JavaScript Declarative UI Library -->
+    <script src="./react.min.js"></script>
+    <!-- React DOM: to intelligently update DOM -->
+    <script src="./react-dom.min.js"></script>
+
+    <!-- to convert JSX to regular JavaScript -->
+    <script src="./babel.min.js"></script>
+
+    <style>
+        table,tbody, tr, td {
+            border: 1px solid grey;
+            padding: 5px;
+            border-collapse: collapse;
+        }
+
+        .card {
+            width: 100px;
+            height: 200px;
+            background-color: grey;
+            border: 1px solid black;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        const EditorScreen = (props) => {
+            
+
+            return (
+                <div>
+                    <h1>Editor Screen</h1>
+                    <table>
+                        <thead>
+                            <tr>
+                                <td>Front</td>
+                                <td>Back</td>
+                                <td>action</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                props.cards.map(card => {
+                                    return (
+                                        <tr>
+                                            <td>{card.front}</td>
+                                            <td>{card.back}</td>
+                                            <td><button>delete</button></td>
+                                        </tr>
+                                    )
+                                })
+                            }
+                        </tbody>
+                           
+                    </table>
+                    <hr />
+                    <button onClick={props.handleSwitch}>Switch to Viewer</button>
+                </div>
+            )
+        }
+
+        const ViewerScreen = (props) => {
+            // which card
+            const [cardNo, setCardNo] = React.useState(0)
+            const [face, setFace] = React.useState("front")
+
+            const toggleFace = () => {
+                if(face === "front"){
+                    setFace("back")
+                }
+                else {
+                    setFace("front")
+                }
+            }
+
+            return (
+                <div>
+                    Viewer Screen
+                    <hr />
+                    {
+                        face === "front" ?
+                        <div class="card" onClick={toggleFace}>
+                            {
+                                props.cards[cardNo]["front"]
+                            }
+                        </div>
+                        : 
+                        <div class="card" onClick={toggleFace}>
+                            {
+                                props.cards[cardNo]["back"]
+                            }
+                        </div>
+                    }
+                    <button onClick={() => setCardNo(cardNo+1)}>next</button>
+                    <button onClick={props.handleSwitch}>Switch to Editor</button>
+
+                </div>
+            )
+        }
+
+        function App(){
+            const [mode, setMode] = React.useState("editor")
+
+            // cards array
+            const [cards, setCards] = React.useState([
+                {front: "2 + 2", back: "4"}, 
+                {front: "4 - 2", back: "2"},
+            ])
+
+            const handleSwitch = () => {
+                if(mode === "editor"){
+                    setMode("viewer")
+                }else {
+                    setMode("editor")
+                }
+            }
+
+            if(mode === "editor"){
+                return <EditorScreen cards={cards} handleSwitch={handleSwitch}/>
+            } else {
+                return <ViewerScreen cards={cards} handleSwitch={handleSwitch}/>
+            }
+        }
+
+
+        // specify where you want to render your react app
+        const root = ReactDOM.createRoot(document.getElementById("root"));
+        // render a component
+        root.render(<App />);
+
+    </script>
+</body>
+</html>
