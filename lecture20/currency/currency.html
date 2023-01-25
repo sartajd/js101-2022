@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+
+    <!-- ReactJS: A JavaScript Declarative UI Library -->
+    <script src="./react.min.js"></script>
+    <!-- React DOM: to intelligently update DOM -->
+    <script src="./react-dom.min.js"></script>
+
+    <!-- to convert JSX to regular JavaScript -->
+    <script src="./babel.min.js"></script>
+</head>
+<body>
+
+    <div id="root"></div>
+
+
+    <script type="text/babel">
+
+        const API_URL = "https://v6.exchangerate-api.com/v6/2e0119f898429484711538a9/latest/"
+        const currencies = ["AFN", "PKR", "USD", "EUR", "INR"]
+
+        function App(){
+
+            const [base, setBase] = React.useState("USD")
+            const [other, setOther] = React.useState("AFN")
+
+            const [baseInput, setBaseInput] = React.useState(0)
+            const [otherInput, setOtherInput] = React.useState(0)
+
+            const [rates, setRates] = React.useState(null)
+
+            React.useEffect(async () => {
+                const response = await fetch(API_URL + base)
+                const data = await response.json()
+                // 
+                setRates(data["conversion_rates"])
+            }, [])
+
+            // run it whenever base input changes
+            React.useEffect(() => {
+                if(rates !== null){
+                    setOtherInput(rates[other] * Number(baseInput))
+                }
+            }, [baseInput])
+
+
+
+            const handleBaseChange  = event => {
+                setBase(event.target.value)
+            }
+
+            const handleOtherChange = event => {
+                setOther(event.target.value)
+            }
+
+            const handleBaseInputChange = event => {
+                setBaseInput(event.target.value)
+            }
+
+            const handleOtherInputChange = event => {
+                setOtherInput(event.target.value)
+            }
+
+            return (
+                <div>
+                    <select name="base" value={base} onChange={handleBaseChange}> 
+                        {
+                            currencies.map(cur => <option value={cur}>{cur}</option>)
+                        }
+                    </select>
+                    <input type="text" value={baseInput} onChange={handleBaseInputChange}/>
+                    <br/>
+
+                    <select name="other" value={other} onChange={handleOtherChange}> 
+                        {
+                            currencies.map(cur => <option value={cur}>{cur}</option>)
+                        }
+                    </select>
+                    <input type="text" value={otherInput} onChange={handleOtherInputChange} disabled/>
+                    
+
+
+                </div>
+            )
+        }
+
+
+        const root = ReactDOM.createRoot(document.querySelector("#root"));
+        root.render(<App />)
+    </script>
+</body>
+</html>

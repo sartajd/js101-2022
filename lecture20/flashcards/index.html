@@ -74,19 +74,11 @@
             }
 
             const deleteCard = event => {
-                // props.deleteCard(event.target.dataset.index)
-                // props.deleteCard(event.target.dataset)
+                props.deleteCard(event.target.dataset.index)
+                // clear response
             }
 
-            const rows = props.cards.map((card,i) => {
-                return (
-                    <tr>
-                        <td>{card.front}</td>
-                        <td>{card.back}</td>
-                        <td><button data-index={i} onClick={deleteCard}>delete</button></td>
-                    </tr>
-                )
-            })
+
 
             return (
                 <div>
@@ -100,13 +92,23 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {rows}
+                            {
+                                props.cards.map((card,i) => {
+                                    return (
+                                        <tr>
+                                            <td>{card.front}</td>
+                                            <td>{card.back}</td>
+                                            <td><button data-index={i} onClick={deleteCard}>delete</button></td>
+                                        </tr>
+                                    )
+                                })
+                            }
                         </tbody>
                            
                     </table>
                     <br />
-                    <input onChange={handleFront} name="front" placeholder="Front" />
-                    <input onChange={handleBack} name="back" placeholder="Back" />
+                    <input onChange={handleFront} name="front" placeholder="Front" value={front}/>
+                    <input onChange={handleBack} name="back" placeholder="Back" value={back}/>
                     <button onClick={addCard}>Add Card</button>
                     <hr />
                     <button onClick={props.handleSwitch}>Viewer</button>
@@ -191,10 +193,9 @@
             }
 
             const deleteCard = (index) => {
-                const cards = [...cards]
-                cards.splice(index, 1)
-                console.log(cards)
-                setCards(cards)
+                const c = [...cards]
+                c.splice(index, 1)
+                setCards(c)
             }
 
             if(mode === "editor"){

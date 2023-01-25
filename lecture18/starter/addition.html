@@ -2,10 +2,14 @@
     <head>
         <title>Hello</title>
 
-        <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-        <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
+        <!-- ReactJS: A JavaScript Declarative UI Library -->
+        <script src="./react.min.js"></script>
+        <!-- React DOM: to intelligently update DOM -->
+        <script src="./react-dom.min.js"></script>
+
+        <!-- to convert JSX to regular JavaScript -->
+        <script src="./babel.min.js"></script>
         <style>
             div {
                 text-align: center;
@@ -66,23 +70,14 @@
 
                         // check if answer is correct
                         if(Number(response) === num1 + num2){
-                            // trigger re-render
-                            setTimeout(() => setIsWrong(false), 500)
-                            
+                            setIsWrong(false)
 
-                            // trigger re-render again
                             // increase score
-                            
-                            setTimeout(() => setScore(score + 1), 500)
-
+                            setScore(score + 1)
 
                             // change question
-                            // trigger re-render again
-                            setTimeout(() => setNum1(Math.ceil(Math.random() * 10)), 500)
-                            setTimeout(() => setNum2(Math.ceil(Math.random() * 10)), 500)
-
-                            
-                            
+                            setNum1(Math.ceil(Math.random() * 10))
+                            setNum2(Math.ceil(Math.random() * 10))
                         }else {
                             setIsWrong(true)
                             // document.querySelector("#question").style.color = "red"
