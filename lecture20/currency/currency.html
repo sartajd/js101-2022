@@ -5,6 +5,7 @@
 
     <!-- ReactJS: A JavaScript Declarative UI Library -->
     <script src="./react.min.js"></script>
+    
     <!-- React DOM: to intelligently update DOM -->
     <script src="./react-dom.min.js"></script>
 
@@ -31,19 +32,33 @@
 
             const [rates, setRates] = React.useState(null)
 
-            React.useEffect(async () => {
+            const getRates = async () => {
+                setBaseInput("getting rates...")
                 const response = await fetch(API_URL + base)
                 const data = await response.json()
-                // 
                 setRates(data["conversion_rates"])
+                setBaseInput(0)
+            }
+
+            React.useEffect(() => {
+                getRates()
             }, [])
+
+
+            React.useEffect(() => {
+                getRates()
+            }, [base])
 
             // run it whenever base input changes
             React.useEffect(() => {
-                if(rates !== null){
+                if(rates){
                     setOtherInput(rates[other] * Number(baseInput))
                 }
-            }, [baseInput])
+            }, [baseInput, other, base])
+
+
+
+            React.useEffect(() => {}, [])
 
 
 

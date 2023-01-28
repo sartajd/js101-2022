@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+
+    <!-- ReactJS: A JavaScript Declarative UI Library -->
+    <script src="./react.min.js"></script>
+    <!-- React DOM: to intelligently update DOM -->
+    <script src="./react-dom.min.js"></script>
+
+    <!-- to convert JSX to regular JavaScript -->
+    <script src="./babel.min.js"></script>
+</head>
+
+<body>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        function GuestRoom() {
+            React.useEffect(() => {
+                alert("Welcome!")
+
+                return () => {
+                    alert("Good bye! have a nice time")
+                }
+            }, [])
+
+
+            return (
+                <h1>GuestRoom</h1>
+            )
+        }
+
+        function App() {
+            const [show, setShow] = React.useState(false)
+
+            return (
+                <div>
+                    <button onClick={() => setShow(!show)}>Show/Hide</button>
+                    {
+                        show ? <GuestRoom /> : null
+                    }
+                </div>
+            )
+        }
+
+
+
+        // specify where you want to render your react app
+        const root = ReactDOM.createRoot(document.getElementById("root"));
+        // render a component
+        root.render(<App />);
+
+    </script>
+</body>
+
+</html>
