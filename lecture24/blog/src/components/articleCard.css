@@ -1,0 +1,14 @@
+.card {
+    display: flex;
+    justify-content: flex-start; 
+    align-items: center;
+    border: 1px solid grey;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    background-color: white;
+    padding: 5px;
+}
+.card > * {
+    border: 1px solid yellow;
+}
+

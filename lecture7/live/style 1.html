@@ -4,13 +4,14 @@
     </head>
 
     <body>
-        <button onclick="changeColor(event)" data-value="red">Red</button>
-        <button onclick="changeColor(event)" data-value="green">Green</button>
-        <button onclick="changeColor(event)" data-value="blue">Blue</button>
-        <button onclick="changeColor(event)" data-value="black">black</button>
+        <button onclick="changeColor()" data-value="red">Red</button>
+        <button onclick="changeColor()" data-value="green">Green</button>
+        <button onclick="changeColor()" data-value="blue">Blue</button>
+        <button onclick="changeColor()" data-value="black">black</button>
 
         <script>
-            function changeColor(event){
+            function changeColor(){
+                console.log(event)
                 const body = document.querySelector('body');
                 body.style.backgroundColor = event.target.dataset.value;
             }

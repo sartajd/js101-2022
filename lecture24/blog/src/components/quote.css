@@ -1,0 +1,12 @@
+.quoteSection {
+    text-align: center;
+    padding: 30px;
+}   
+
+.quoteSection h2 {
+    font-size: 48px;
+}
+.quoteSection p {
+    color: grey;
+    font-size: large;
+}
