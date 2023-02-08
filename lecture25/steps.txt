@@ -1,0 +1,4 @@
+1. scaffold react project using: create-react-app project_name
+2. install redux and react-redux
+npm i redux react-redux
+3. 
